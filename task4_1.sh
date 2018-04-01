@@ -2,7 +2,6 @@
 # System Innformation
 
 result=$(pwd)/"task4_1.out"
-
 CPU=$(dmidecode -s processor-version)
 RAM=`cat /proc/meminfo  | grep MemTotal | awk '{print $2" KB"}'`
       if [ -z "${RAM// /}" ] ; then RAM="Unknown" ; fi
