@@ -1,9 +1,9 @@
 #!/bin/bash
 # System Innformation
 
-result=$(pwd)/"task4_1.out"
+result=$(dirname $0)/"task4_1.out"
 CPU=$(dmidecode -s processor-version)
-RAM=`cat /proc/meminfo  | grep MemTotal | awk '{print $2" KB"}'`
+RAM=`cat /proc/meminfo | grep MemTotal | awk '{print $2" KB"}'`
       if [ -z "${RAM// /}" ] ; then RAM="Unknown" ; fi
 MB="$(dmidecode -s baseboard-manufacturer) $(dmidecode -s baseboard-product-name)"
       if [ $(SSN=$(dmidecode -s system-serial-number)) -z ]; then SSN="Unknown"; fi
@@ -14,7 +14,7 @@ HostName=$(hostname)
 UpTime=`uptime -p | awk '{print $2,$3,$4,$5,$6,$7,$8,$9}'`
 Proc_Run=`ps -e | wc -l`
 User_Logged_In=$(who | wc -l)
-
+echo $result
 echo "--- Hardware ---" > $result
 echo "CPU: $CPU" >> $result
 echo "RAM: $RAM" >> $result
